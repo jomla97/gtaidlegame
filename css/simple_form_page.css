@@ -1,0 +1,130 @@
+@font-face {
+  font-family: 'pricedownbl';
+  src: url("fonts/pricedownbl.eot");
+  src: url("fonts/pricedownbl.eot") format("embedded-opentype"), url("fonts/pricedownbl.woff2") format("woff2"), url("fonts/pricedownbl.woff") format("woff"), url("fonts/pricedownbl.ttf") format("truetype"), url("fonts/pricedownbl.svg#pricedownbl") format("svg"); }
+* {
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+  cursor: url(../res/cursor.png), auto;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  -khtml-user-select: none;
+  /* Konqueror */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+     not supported by any browser */ }
+
+html {
+  cursor: url(../res/cursor.png), auto; }
+
+body {
+  background-color: #313C3E; }
+
+body.loading div#loading {
+  display: block; }
+
+a {
+  color: #BB2A2A;
+  text-decoration: none; }
+
+a:hover {
+  cursor: url(../res/cursor-pointer.png) 16 0, auto;
+  text-decoration: underline; }
+
+.disabled {
+  background-color: #666666 !important;
+  color: #b3b3b3 !important;
+  cursor: url(../res/cursor.png), auto !important; }
+
+.button {
+  background-color: #BB2A2A;
+  color: white;
+  padding: 5px 20px;
+  border: none;
+  font-size: 24px;
+  display: inline-block;
+  height: 25px; }
+
+.button:hover {
+  background-color: #a62525;
+  cursor: url(../res/cursor-pointer.png) 16 0, auto !important; }
+
+.close-button {
+  background-color: #BB2A2A;
+  color: white;
+  padding: 3px;
+  border: none;
+  font-size: 20px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  cursor: url(../res/cursor-pointer.png) 16 0, auto !important;
+  position: absolute;
+  right: 0;
+  top: 0; }
+
+.close-button:hover {
+  background-color: #a62525; }
+
+.red-text {
+  color: #d54343; }
+
+main {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; }
+  main form {
+    background-color: #0D0D0D;
+    color: #cccccc;
+    width: 400px;
+    padding: 50px 80px;
+    font-size: 24px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -280px;
+    margin-top: -265px;
+    border-top: solid 10px #BB2A2A; }
+    main form .companion-speech {
+      width: 100%; }
+    main form .submit-button {
+      background-color: #40bf81;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 20px 7px;
+      font-size: 25px;
+      border: none;
+      cursor: url(../res/cursor-pointer.png), 16 0 auto;
+      text-decoration: none;
+      margin-top: 30px; }
+    main form .submit-button:hover {
+      background-color: #339967;
+      text-decoration: none;
+      cursor: url(../res/cursor-pointer.png) 16 0, auto; }
+    main form .submit-button-disabled {
+      background-color: #666666;
+      color: #b3b3b3;
+      width: 100%;
+      text-align: center;
+      padding: 20px 7px;
+      font-size: 25px;
+      border: none;
+      cursor: url(../res/cursor.png), auto;
+      text-decoration: none; }
+    main form input.textfield {
+      background-color: #191919;
+      border: none;
+      color: white;
+      width: 100%;
+      font-size: 18px;
+      padding: 7px 0; }
+
+/*# sourceMappingURL=simple_form_page.css.map */

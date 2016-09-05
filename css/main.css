@@ -1,0 +1,557 @@
+@font-face {
+  font-family: 'pricedownbl';
+  src: url("fonts/pricedownbl.eot");
+  src: url("fonts/pricedownbl.eot") format("embedded-opentype"), url("fonts/pricedownbl.woff2") format("woff2"), url("fonts/pricedownbl.woff") format("woff"), url("fonts/pricedownbl.ttf") format("truetype"), url("fonts/pricedownbl.svg#pricedownbl") format("svg"); }
+* {
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+  cursor: url(../res/cursor.png), auto;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  -khtml-user-select: none;
+  /* Konqueror */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+     not supported by any browser */ }
+
+html {
+  cursor: url(../res/cursor.png), auto; }
+
+body {
+  background-color: #313C3E; }
+
+a {
+  color: #BB2A2A;
+  text-decoration: none; }
+
+a:hover {
+  cursor: url(../res/cursor-pointer.png) 16 0, auto;
+  text-decoration: underline; }
+
+.disabled {
+  background-color: #666666 !important;
+  color: #b3b3b3 !important;
+  cursor: url(../res/cursor.png), auto !important; }
+
+.button {
+  background-color: #BB2A2A;
+  color: white;
+  padding: 5px 20px;
+  border: none;
+  font-size: 24px;
+  display: inline-block;
+  height: 25px; }
+
+.button:hover {
+  background-color: #a62525;
+  cursor: url(../res/cursor-pointer.png) 16 0, auto !important; }
+
+.close-button {
+  background-color: #BB2A2A;
+  color: white;
+  padding: 3px;
+  border: none;
+  font-size: 20px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  cursor: url(../res/cursor-pointer.png) 16 0, auto !important;
+  position: absolute;
+  right: 0;
+  top: 0; }
+
+.close-button:hover {
+  background-color: #a62525; }
+
+.red-text {
+  color: #BB2A2A; }
+
+span.right-text {
+  float: right; }
+
+.alert-background {
+  background-color: #0D0D0D;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.alert {
+  z-index: 100;
+  display: block;
+  width: 700px;
+  height: 200px;
+  background-color: #0D0D0D;
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -350px;
+  margin-top: -10px;
+  padding: 20px; }
+  .alert .companion-speech {
+    height: 200px;
+    margin-top: -220px; }
+  .alert h1 {
+    margin-bottom: 10px; }
+  .alert .ok-button {
+    width: 700px;
+    color: white;
+    padding: 20px 0;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    background-color: #66CC9A;
+    cursor: url(../res/cursor-pointer.png) 16 0, auto;
+    font-size: 20px; }
+  .alert .ok-button:hover {
+    background-color: #40bf81; }
+
+main {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; }
+  main div#map-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1050px; }
+    main div#map-wrapper img#map {
+      height: auto !important; }
+    main div#map-wrapper div#map-content {
+      position: absolute;
+      top: 0;
+      left: 0; }
+      main div#map-wrapper div#map-content div.map-marker:not(.selected) {
+        width: 0;
+        height: 0;
+        margin-left: -30px;
+        margin-top: -50px;
+        border-left: solid 30px transparent;
+        border-right: solid 30px transparent;
+        position: absolute;
+        border-radius: 15px; }
+      main div#map-wrapper div#map-content div.map-marker:hover {
+        cursor: url(../res/cursor-pointer.png) 16 0, auto;
+        border-left: solid 40px transparent;
+        border-right: solid 40px transparent;
+        margin-left: -40px;
+        margin-top: -65px; }
+      main div#map-wrapper div#map-content div.map-marker.owned:not(.selected) {
+        border-top: solid 50px #66CC9A; }
+      main div#map-wrapper div#map-content div.map-marker.owned:hover, main div#map-wrapper div#map-content div.map-marker.owned.selected {
+        border-top: solid 65px #40bf81; }
+      main div#map-wrapper div#map-content div.map-marker.for-sale:not(.selected) {
+        border-top: solid 50px #BB2A2A; }
+      main div#map-wrapper div#map-content div.map-marker.for-sale:hover, main div#map-wrapper div#map-content div.map-marker.for-sale.selected {
+        border-top: solid 65px #912121; }
+      main div#map-wrapper div#map-content div.map-marker.selected {
+        width: 0;
+        height: 0;
+        border-left: solid 40px transparent;
+        border-right: solid 40px transparent;
+        margin-left: -40px;
+        margin-top: -65px;
+        position: absolute;
+        border-radius: 15px; }
+      main div#map-wrapper div#map-content div#warehouse1 {
+        top: 2100px;
+        left: 920px; }
+      main div#map-wrapper div#map-content div#warehouse2 {
+        top: 2200px;
+        left: 1030px; }
+  main div#HUD {
+    position: fixed;
+    top: 0;
+    left: 0; }
+    main div#HUD div#hamburger-menu-toggle {
+      padding: 20px;
+      position: fixed;
+      z-index: 110; }
+      main div#HUD div#hamburger-menu-toggle div {
+        background-color: white;
+        width: 100px;
+        height: 12px;
+        margin: 15px 0; }
+    main div#HUD div#hamburger-menu {
+      z-index: 100;
+      display: block;
+      width: 500px;
+      height: 100%;
+      position: fixed;
+      left: -500px;
+      top: 0;
+      background-color: #2A3C40;
+      color: #a5bec4;
+      padding-top: 150px; }
+      main div#HUD div#hamburger-menu a {
+        color: #a5bec4;
+        text-decoration: none; }
+      main div#HUD div#hamburger-menu ul li {
+        width: 100%;
+        padding: 40px 0;
+        font-size: 50px;
+        text-align: center;
+        list-style-type: none; }
+      main div#HUD div#hamburger-menu ul li:hover, main div#HUD div#hamburger-menu ul li:active {
+        background-color: #202e31; }
+    main div#HUD div#logout {
+      position: fixed;
+      margin: 5px;
+      top: 0;
+      right: 0; }
+    main div#HUD h1#cash {
+      color: white;
+      width: 300px;
+      position: fixed;
+      top: 0;
+      left: 50%;
+      margin-left: -150px;
+      text-align: center;
+      font-size: 40px;
+      font-family: 'pricedownbl', arial, sans-serif;
+      text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black; }
+    main div#HUD div#warehouse-toggle {
+      position: fixed;
+      right: 5px;
+      top: 50px; }
+      main div#HUD div#warehouse-toggle .toggle {
+        background-color: black; }
+      main div#HUD div#warehouse-toggle .toggle-selected {
+        background-color: #BB2A2A; }
+    main div#HUD div#page-toggle {
+      position: fixed;
+      right: 5px;
+      bottom: 50px; }
+      main div#HUD div#page-toggle .toggle {
+        background-color: black; }
+      main div#HUD div#page-toggle .toggle-selected {
+        background-color: #BB2A2A; }
+      main div#HUD div#page-toggle .toggle-selected:hover {
+        background-color: #912121; }
+    main div#HUD div#stock-actions {
+      position: fixed;
+      top: 50px;
+      left: 5px; }
+      main div#HUD div#stock-actions .disabled {
+        background-color: #666666 !important;
+        color: #b3b3b3 !important;
+        cursor: url(../res/cursor.png), auto !important; }
+    main div#HUD div.dialog .submit-button {
+      background-color: #40bf81;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 25px;
+      border: none;
+      cursor: url(../res/cursor-pointer.png), 16 0 auto;
+      text-decoration: none; }
+    main div#HUD div.dialog .submit-button:hover {
+      background-color: #339967;
+      text-decoration: none;
+      cursor: url(../res/cursor-pointer.png) 16 0, auto; }
+    main div#HUD div.dialog .submit-button-disabled {
+      background-color: #666666;
+      color: #b3b3b3;
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 25px;
+      border: none;
+      cursor: url(../res/cursor.png), auto;
+      text-decoration: none; }
+    main div#HUD div.dialog a {
+      text-decoration: none; }
+    main div#HUD div#buy-stock-dialog form div.selection-list {
+      background-color: #272727;
+      padding: 2.5px;
+      width: 100%; }
+      main div#HUD div#buy-stock-dialog form div.selection-list .hidden {
+        display: none; }
+      main div#HUD div#buy-stock-dialog form div.selection-list .toggle {
+        background-color: #BB2A2A;
+        width: 154.2px;
+        text-align: center;
+        margin: 2.5px;
+        display: inline-block; }
+      main div#HUD div#buy-stock-dialog form div.selection-list .toggle-selected {
+        border: solid 2px white;
+        margin: 0.5px;
+        width: 154.2px;
+        text-align: center;
+        display: inline-block; }
+      main div#HUD div#buy-stock-dialog form div.selection-list .toggle:hover {
+        background-color: #a62525; }
+      main div#HUD div#buy-stock-dialog form div.selection-list .disabled {
+        background-color: #666666;
+        color: #b3b3b3;
+        width: 154.2px;
+        text-align: center;
+        display: inline-block;
+        border: none;
+        margin: 2.5px;
+        padding: 5px 20px;
+        font-size: 24px;
+        height: 25px; }
+    main div#HUD div#upgrades-dialog {
+      overflow-y: scroll;
+      overflow-x: hidden; }
+      main div#HUD div#upgrades-dialog .upgrade {
+        margin: 20px 0;
+        background-color: #1a1a1a;
+        position: relative;
+        padding: 13px; }
+        main div#HUD div#upgrades-dialog .upgrade p.upgrade-description {
+          display: block;
+          font-size: 14px;
+          padding-top: 10px; }
+        main div#HUD div#upgrades-dialog .upgrade p, main div#HUD div#upgrades-dialog .upgrade .upgrade-button, main div#HUD div#upgrades-dialog .upgrade .upgrade-button-disabled {
+          display: inline; }
+        main div#HUD div#upgrades-dialog .upgrade .upgrade-cost {
+          padding: 10px;
+          margin: 15px -4px -4px -4px;
+          display: block;
+          background-color: #272727;
+          font-size: 16px; }
+        main div#HUD div#upgrades-dialog .upgrade .upgrade-button {
+          padding: 10px;
+          background-color: #66CC9A;
+          position: absolute;
+          right: 10px;
+          margin-top: -4px;
+          cursor: url(../res/cursor-pointer.png), 16 0 auto !important;
+          color: white; }
+        main div#HUD div#upgrades-dialog .upgrade .upgrade-button:hover {
+          background-color: #40bf81;
+          cursor: url(../res/cursor-pointer.png), 16 0 auto !important; }
+        main div#HUD div#upgrades-dialog .upgrade .upgrade-button-disabled {
+          padding: 10px;
+          background-color: #666666 !important;
+          position: absolute;
+          right: 10px;
+          margin-top: -4px;
+          color: #b3b3b3 !important;
+          cursor: url(../res/cursor.png), auto !important; }
+    main div#HUD div.dialog {
+      position: fixed;
+      padding: 20px;
+      margin: 0;
+      width: 400px;
+      height: 600px;
+      left: 5px;
+      bottom: 25px;
+      display: none;
+      background-color: #0D0D0D;
+      color: white; }
+      main div#HUD div.dialog h1 {
+        margin-bottom: 20px; }
+      main div#HUD div.dialog p {
+        font-size: 25px;
+        margin: 10px 0; }
+    main div#HUD div#active-shipment {
+      width: 500px;
+      padding: 20px;
+      position: fixed;
+      left: 50%;
+      margin-left: -250px;
+      bottom: 25px;
+      text-align: center;
+      background-color: #e6e6e6;
+      border-top: 5px solid #BB2A2A;
+      opacity: 0.7; }
+    main div#HUD div#warehouse-space {
+      background-color: #e6e6e6;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 20px; }
+      main div#HUD div#warehouse-space div#used-space {
+        background-color: #66CC9A;
+        height: 100%;
+        position: absolute; }
+      main div#HUD div#warehouse-space p {
+        position: absolute;
+        text-align: center;
+        width: 100%; }
+    main div#HUD div#admin-stats {
+      position: fixed;
+      bottom: 100px;
+      right: 5px;
+      width: 100%;
+      text-align: right; }
+  main div#summary {
+    position: fixed;
+    display: none;
+    width: 960px;
+    height: 700px;
+    color: white;
+    left: 50%;
+    top: 50%;
+    margin-left: -480px;
+    margin-top: -350px; }
+    main div#summary div.summary-panel {
+      padding: 20px;
+      background-color: #0D0D0D;
+      opacity: 0.9;
+      margin: 20px; }
+      main div#summary div.summary-panel div#summary-toggle {
+        position: absolute;
+        top: -15px;
+        left: 20px; }
+        main div#summary div.summary-panel div#summary-toggle .toggle {
+          background-color: black; }
+        main div#summary div.summary-panel div#summary-toggle .toggle-selected {
+          background-color: #0D0D0D; }
+      main div#summary div.summary-panel h1, main div#summary div.summary-panel h2 {
+        font-weight: normal; }
+      main div#summary div.summary-panel h1:not(.primary-title) {
+        margin: 10px 0; }
+      main div#summary div.summary-panel h1.primary-title {
+        margin-bottom: 20px; }
+      main div#summary div.summary-panel ul li {
+        margin: 8px 0;
+        list-style-type: none;
+        font-size: 20px; }
+
+@media only screen and (max-width: 1080px) {
+  #active-shipment {
+    width: 100% !important;
+    bottom: 80px !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+    border-top: solid 10px #BB2A2A !important; }
+    #active-shipment h1 {
+      font-size: 60px !important; }
+    #active-shipment p {
+      font-size: 30px !important; }
+
+  h1#cash {
+    font-size: 60px !important;
+    width: 100% !important;
+    margin-left: -416px !important;
+    margin-top: 23px !important; }
+
+  #warehouse-space {
+    padding: 30px 0 !important;
+    font-size: 30px; }
+    #warehouse-space #used-space {
+      height: 100% !important;
+      top: 0; }
+
+  .upgrade {
+    font-size: 20px !important; }
+
+  .upgrade-cost {
+    margin: 80px -4px -4px -4px !important;
+    font-size: 50px !important; }
+
+  .upgrade-button, .upgrade-button-disabled {
+    padding: 30px !important;
+    font-size: 30px !important; }
+
+  .close-button {
+    padding: 20px 50px 70px 50px !important;
+    font-size: 60px !important; }
+
+  div#sell-stock-dialog .submit-button, div#sell-stock-dialog .submit-button-disabled, div#buy-warehouse-dialog .submit-button, div#buy-warehouse-dialog .submit-button-disabled {
+    position: absolute;
+    bottom: 0; }
+
+  div.dialog {
+    z-index: 90;
+    position: fixed !important;
+    padding: 0 !important;
+    margin: 0;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    overflow-y: scroll !important;
+    display: none;
+    background-color: #0D0D0D;
+    color: white; }
+    div.dialog h1:first-of-type {
+      margin-top: 150px !important; }
+    div.dialog h1 {
+      margin: 0 10px 20px 10px;
+      font-size: 50px !important; }
+    div.dialog p {
+      font-size: 30px !important;
+      margin: 10px !important; }
+    div.dialog .selection-list {
+      padding: 0 !important; }
+      div.dialog .selection-list .toggle, div.dialog .selection-list .toggle-selected, div.dialog .selection-list .disabled {
+        padding: 40px 0 !important;
+        width: 48% !important;
+        margin: 1% !important;
+        font-size: 30px !important; }
+      div.dialog .selection-list .toggle-selected {
+        border: none !important;
+        background-color: white !important;
+        color: #BB2A2A; }
+    div.dialog .submit-button, div.dialog .submit-button-disabled {
+      width: 100% !important;
+      margin-top: 20px !important;
+      display: block;
+      padding: 60px 0 !important;
+      font-size: 30px !important; }
+
+  div#summary {
+    width: 100% !important;
+    height: 100% !important;
+    overflow-y: scroll !important;
+    background-color: #0D0D0D !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 !important; }
+    div#summary div.summary-panel {
+      padding: 20px;
+      background-color: #0D0D0D;
+      opacity: 0.9;
+      margin: 20px; }
+      div#summary div.summary-panel div#summary-toggle {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important; }
+        div#summary div.summary-panel div#summary-toggle .toggle {
+          background-color: black; }
+        div#summary div.summary-panel div#summary-toggle .toggle-selected {
+          background-color: #0D0D0D; }
+      div#summary div.summary-panel h1, div#summary div.summary-panel h2 {
+        font-weight: normal; }
+      div#summary div.summary-panel h1:not(.primary-title) {
+        margin: 10px 0; }
+      div#summary div.summary-panel h1.primary-title {
+        margin-bottom: 20px; }
+      div#summary div.summary-panel ul li {
+        margin: 8px 0;
+        list-style-type: none;
+        font-size: 20px; } }
+div#loading {
+  display: block;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #2A3C40;
+  color: white; }
+  div#loading p {
+    font-size: 30px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    margin: 20px; }
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,771 @@
+$main_background_color: #0D0D0D;
+$login_background_color: #2A3C40;
+$textfield_color: #191919;
+$main_accent_color: #BB2A2A;
+$secondary_accent_color: #66CC9A;
+$font_color: darken(white, 20%);
+
+@font-face {
+    font-family: 'pricedownbl';
+    src: url('fonts/pricedownbl.eot');
+    src: url('fonts/pricedownbl.eot') format('embedded-opentype'),
+         url('fonts/pricedownbl.woff2') format('woff2'),
+         url('fonts/pricedownbl.woff') format('woff'),
+         url('fonts/pricedownbl.ttf') format('truetype'),
+         url('fonts/pricedownbl.svg#pricedownbl') format('svg');
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+  cursor: url(../res/cursor.png), auto;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+html{
+  cursor: url(../res/cursor.png), auto;
+}
+
+body{
+  background-color: #313C3E;
+}
+
+a{
+  color: $main_accent_color;
+  text-decoration: none;
+}
+a:hover{
+  cursor: url(../res/cursor-pointer.png) 16 0, auto;
+  text-decoration: underline;
+}
+
+.disabled{
+  background-color: lighten($main_background_color, 35%) !important;
+  color: darken(white, 30%) !important;
+  cursor: url(../res/cursor.png), auto !important;
+}
+
+.button{
+  background-color: $main_accent_color;
+  color: white;
+  padding: 5px 20px;
+  border: none;
+  font-size: 24px;
+  display: inline-block;
+  height: 25px;
+}
+.button:hover{
+  background-color: darken($main_accent_color, 5%);
+  cursor: url(../res/cursor-pointer.png) 16 0, auto !important;
+}
+
+.close-button{
+  background-color: $main_accent_color;
+  color: white;
+  padding: 3px;
+  border: none;
+  font-size: 20px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  cursor: url(../res/cursor-pointer.png) 16 0, auto !important;
+
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.close-button:hover{
+  background-color: darken($main_accent_color, 5%);
+}
+
+.red-text{
+  color: $main_accent_color;
+}
+
+span.right-text{
+  float: right;
+}
+
+.alert-background{
+  background-color: $main_background_color;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.alert{
+  z-index: 100;
+  display: block;
+  width: 700px;
+  height: 200px;
+  background-color: $main_background_color;
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -350px;
+  margin-top: -10px;
+  padding: 20px;
+
+  .companion-speech{
+    height: 200px;
+    margin-top: -220px;
+  }
+
+  h1{
+    margin-bottom: 10px;
+  }
+
+  .ok-button{
+    width: 700px;
+    color: white;
+    padding: 20px 0;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    background-color: $secondary_accent_color;
+    cursor: url(../res/cursor-pointer.png) 16 0, auto;
+    font-size: 20px;
+  }
+  .ok-button:hover{
+    background-color: darken($secondary_accent_color, 10%);
+  }
+}
+
+main{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  div#map-wrapper{
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1050px;
+
+    img#map{
+      height: auto !important;
+    }
+
+    div#map-content{
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      div.map-marker:not(.selected){
+        width: 0;
+        height: 0;
+        margin-left: -30px;
+        margin-top: -50px;
+
+        border-left: solid 30px transparent;
+        border-right: solid 30px transparent;
+
+        position: absolute;
+
+        border-radius: 15px;
+      }
+      div.map-marker:hover{
+        cursor: url(../res/cursor-pointer.png) 16 0, auto;
+
+        border-left: solid 40px transparent;
+        border-right: solid 40px transparent;
+
+        margin-left: -40px;
+        margin-top: -65px;
+      }
+
+      div.map-marker.owned:not(.selected){
+        border-top: solid 50px $secondary_accent_color;
+      }
+      div.map-marker.owned:hover, div.map-marker.owned.selected{
+        border-top: solid 65px darken($secondary_accent_color, 10%);
+      }
+
+      div.map-marker.for-sale:not(.selected){
+        border-top: solid 50px $main_accent_color;
+      }
+      div.map-marker.for-sale:hover, div.map-marker.for-sale.selected{
+        border-top: solid 65px darken($main_accent_color, 10%);
+      }
+
+      div.map-marker.selected{
+        width: 0;
+        height: 0;
+
+        border-left: solid 40px transparent;
+        border-right: solid 40px transparent;
+
+        margin-left: -40px;
+        margin-top: -65px;
+
+        position: absolute;
+
+        border-radius: 15px;
+      }
+
+      div#warehouse1{
+        top: 2100px;
+        left: 920px;
+      }
+      div#warehouse2{
+        top: 2200px;
+        left: 1030px;
+      }
+    }
+  }
+
+  div#HUD{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    div#hamburger-menu-toggle{
+      padding: 20px;
+      position: fixed;
+      z-index: 110;
+
+      div{
+        background-color: white;
+        width: 100px;
+        height: 12px;
+        margin: 15px 0;
+      }
+    }
+
+    div#hamburger-menu{
+      z-index: 100;
+      display: block;
+      width: 500px;
+      height: 100%;
+      position: fixed;
+      left: -500px;
+      top: 0;
+      background-color: $login_background_color;
+      color: lighten($login_background_color, 50%);
+
+      padding-top: 150px;
+
+      a{
+        color: lighten($login_background_color, 50%);
+        text-decoration: none;
+      }
+
+      ul{
+        li{
+          width: 100%;
+          padding: 40px 0;
+          font-size: 50px;
+          text-align: center;
+          list-style-type: none;
+        }
+        li:hover, li:active{
+          background-color: darken($login_background_color, 5%);
+        }
+      }
+    }
+
+    div#logout{
+      position: fixed;
+      margin: 5px;
+      top: 0;
+      right: 0;
+    }
+
+    h1#cash{
+      color: white;
+      width: 300px;
+      position: fixed;
+      top: 0;
+      left: 50%;
+      margin-left: -150px;
+      text-align: center;
+      font-size: 40px;
+      font-family: 'pricedownbl', arial, sans-serif;
+      text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+    }
+
+    div#warehouse-toggle{
+      position: fixed;
+      right: 5px;
+      top: 50px;
+
+      .toggle{
+        background-color: black;
+      }
+      .toggle-selected{
+        background-color: $main_accent_color;
+      }
+    }
+
+    div#page-toggle{
+      position: fixed;
+      right: 5px;
+      bottom: 50px;
+
+      .toggle{
+        background-color: black;
+      }
+      .toggle-selected{
+        background-color: $main_accent_color;
+      }
+      .toggle-selected:hover{
+        background-color: darken($main_accent_color, 10%);
+      }
+    }
+
+    div#stock-actions{
+      position: fixed;
+      top: 50px;
+      left: 5px;
+
+      .disabled{
+        background-color: lighten($main_background_color, 35%) !important;
+        color: darken(white, 30%) !important;
+        cursor: url(../res/cursor.png), auto !important;
+      }
+    }
+
+    div.dialog{
+      .submit-button{
+        background-color: darken($secondary_accent_color, 10%);
+        color: white;
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 25px;
+        border: none;
+        cursor: url(../res/cursor-pointer.png), 16 0 auto;
+        text-decoration: none;
+      }
+      .submit-button:hover{
+        background-color: darken($secondary_accent_color, 20%);
+        text-decoration: none;
+        cursor: url(../res/cursor-pointer.png) 16 0, auto;
+      }
+      .submit-button-disabled{
+        background-color: lighten($main_background_color, 35%);
+        color: darken(white, 30%);
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 25px;
+        border: none;
+        cursor: url(../res/cursor.png), auto;
+        text-decoration: none;
+      }
+
+      a{
+        text-decoration: none;
+      }
+    }
+
+    div#buy-stock-dialog{
+      form{
+        div.selection-list{
+          background-color: lighten($main_background_color, 10%);
+          padding: 2.5px;
+          width: 100%;
+
+          .hidden{
+            display: none;
+          }
+          .toggle{
+            background-color: $main_accent_color;
+            width: 154.2px;
+            text-align: center;
+            margin: 2.5px;
+            display: inline-block;
+          }
+          .toggle-selected{
+            border: solid 2px white;
+            margin: 0.5px;
+            width: 154.2px;
+            text-align: center;
+            display: inline-block;
+          }
+          .toggle:hover{
+            background-color: darken($main_accent_color, 5%);
+          }
+          .disabled{
+            background-color: lighten($main_background_color, 35%);
+            color: darken(white, 30%);
+            width: 154.2px;
+            text-align: center;
+            display: inline-block;
+            border: none;
+            margin: 2.5px;
+            padding: 5px 20px;
+            font-size: 24px;
+            height: 25px;
+          }
+        }
+      }
+    }
+
+    div#upgrades-dialog{
+      overflow-y: scroll;
+      overflow-x: hidden;
+
+      .upgrade{
+        margin: 20px 0;
+        background-color: lighten($main_background_color, 5%);
+        position: relative;
+        padding: 13px;
+
+        p.upgrade-description{
+          display: block;
+          font-size: 14px;
+          padding-top: 10px;
+        }
+
+        p, .upgrade-button, .upgrade-button-disabled{
+          display: inline;
+        }
+        .upgrade-cost{
+          padding: 10px;
+          margin: 15px -4px -4px -4px;
+          display: block;
+          background-color: lighten($main_background_color, 10%);
+          font-size: 16px;
+        }
+        .upgrade-button{
+          padding: 10px;
+          background-color: $secondary_accent_color;
+          position: absolute;
+          right: 10px;
+          margin-top: -4px;
+          cursor: url(../res/cursor-pointer.png), 16 0 auto !important;
+          color: white;
+        }
+        .upgrade-button:hover{
+          background-color: darken($secondary_accent_color, 10%);
+          cursor: url(../res/cursor-pointer.png), 16 0 auto !important;
+        }
+        .upgrade-button-disabled{
+          padding: 10px;
+          background-color: lighten($main_background_color, 35%) !important;
+          position: absolute;
+          right: 10px;
+          margin-top: -4px;
+          color: darken(white, 30%) !important;
+          cursor: url(../res/cursor.png), auto !important;
+        }
+      }
+    }
+
+    div.dialog{
+      position: fixed;
+      padding: 20px;
+      margin: 0;
+      width: 400px;
+      height: 600px;
+      left: 5px;
+      bottom: 25px;
+
+      display: none;
+
+      background-color: $main_background_color;
+      color: white;
+
+      h1{
+        margin-bottom: 20px;
+      }
+      p{
+        font-size: 25px;
+        margin: 10px 0;
+      }
+    }
+
+    div#active-shipment{
+      //background-color: darken(white, 10%);
+      //border-bottom: solid 2px darken(white, 30%);
+      width: 500px;
+      padding: 20px;
+      position: fixed;
+      left: 50%;
+      margin-left: -250px;
+      bottom: 25px;
+      text-align: center;
+      background-color: darken(white, 10%);
+      border-top: 5px solid $main_accent_color;
+      //border-bottom: 3px solid darken(white, 15%);
+      opacity: 0.7;
+    }
+
+    div#warehouse-space{
+      background-color: darken(white, 10%);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 20px;
+
+      div#used-space{
+        background-color: $secondary_accent_color;
+        height: 100%;
+        position: absolute;
+      }
+      p{
+        position: absolute;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    div#admin-stats{
+      position: fixed;
+      bottom: 100px;
+      right: 5px;
+      width: 100%;
+      text-align: right;
+    }
+  }
+
+  div#summary{
+    position: fixed;
+    display: none;
+    width: 960px;
+    height: 700px;
+    color: white;
+    left: 50%;
+    top: 50%;
+    margin-left: -480px;
+    margin-top: -350px;
+
+    div.summary-panel{
+      padding: 20px;
+      background-color: $main_background_color;
+      opacity: 0.9;
+      margin: 20px;
+
+      div#summary-toggle{
+        position: absolute;
+        top: -15px;
+        left: 20px;
+
+        .toggle{
+          background-color: black;
+        }
+        .toggle-selected{
+          background-color: $main_background_color;
+        }
+      }
+
+      h1, h2{
+        font-weight: normal;
+      }
+
+      h1:not(.primary-title){
+        margin: 10px 0;
+      }
+
+      h1.primary-title{
+        margin-bottom: 20px;
+      }
+
+      ul{
+        li{
+          margin: 8px 0;
+          list-style-type: none;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1080px){
+  #active-shipment{
+    width: 100% !important;
+    bottom: 80px !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+    border-top: solid 10px $main_accent_color !important;
+
+    h1{
+      font-size: 60px !important;
+    }
+    p{
+      font-size: 30px !important;
+    }
+  }
+
+  h1#cash{
+    font-size: 60px !important;
+    width: 100% !important;
+    margin-left: -416px !important;
+    margin-top: 23px !important;
+  }
+
+  #warehouse-space{
+    padding: 30px 0 !important;
+    font-size: 30px;
+
+    #used-space{
+      height: 100% !important;
+      top: 0;
+    }
+  }
+
+  .upgrade{
+    font-size: 20px !important;
+  }
+
+  .upgrade-cost{
+    margin: 80px -4px -4px -4px !important;
+    font-size: 50px !important;
+  }
+
+  .upgrade-button, .upgrade-button-disabled{
+    padding: 30px !important;
+    font-size: 30px !important;
+  }
+
+  .close-button{
+    padding: 20px 50px 70px 50px !important;
+    font-size: 60px !important;
+  }
+
+  div#sell-stock-dialog, div#buy-warehouse-dialog{
+
+    .submit-button, .submit-button-disabled{
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  div.dialog{
+    z-index: 90;
+    position: fixed !important;
+    padding: 0 !important;
+    margin: 0;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    overflow-y: scroll !important;
+
+    display: none;
+
+    background-color: $main_background_color;
+    color: white;
+
+    h1:first-of-type{
+      margin-top: 150px !important;
+    }
+    h1{
+      margin: 0 10px 20px 10px;
+      font-size: 50px !important;
+    }
+    p{
+      font-size: 30px !important;
+      margin: 10px !important;
+    }
+
+    .selection-list{
+      padding: 0 !important;
+
+
+      .toggle, .toggle-selected, .disabled{
+        padding: 40px 0 !important;
+        width: 48% !important;
+        margin: 1% !important;
+        font-size: 30px !important;
+      }
+      .toggle-selected{
+        border: none !important;
+        background-color: white !important;
+        color: $main_accent_color;
+      }
+    }
+
+    .submit-button, .submit-button-disabled{
+      width: 100% !important;
+      margin-top: 20px !important;
+      display: block;
+      padding: 60px 0 !important;
+      font-size: 30px !important;
+    }
+  }
+
+  div#summary{
+    width: 100% !important;
+    height: 100% !important;
+    overflow-y: scroll !important;
+    background-color: $main_background_color !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 !important;
+
+    div.summary-panel{
+      padding: 20px;
+      background-color: $main_background_color;
+      opacity: 0.9;
+      margin: 20px;
+
+      div#summary-toggle{
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+
+        .toggle{
+          background-color: black;
+        }
+        .toggle-selected{
+          background-color: $main_background_color;
+        }
+      }
+
+      h1, h2{
+        font-weight: normal;
+      }
+
+      h1:not(.primary-title){
+        margin: 10px 0;
+      }
+
+      h1.primary-title{
+        margin-bottom: 20px;
+      }
+
+      ul{
+        li{
+          margin: 8px 0;
+          list-style-type: none;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+div#loading{
+  display: block;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $login_background_color;
+  color: white;
+
+  p{
+    font-size: 30px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    margin: 20px;
+  }
+}
